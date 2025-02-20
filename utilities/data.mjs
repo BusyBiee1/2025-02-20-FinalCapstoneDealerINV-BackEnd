@@ -1,11 +1,8 @@
-const doggos = [
-  { name: 'Maxwell', cute: true, age: 13 },
-  { name: 'Steve', cute: true, age: 13 },
-  { name: 'George', cute: true, age: 13 },
-  { name: 'Fred', cute: true, age: 13 },
-  { name: 'Spike', cute: true, age: 13 },
-  { name: 'Gertie', cute: true, age: 13 },
-  { name: 'Donna', cute: true, age: 13 },
-];
+const vehicles = [
+  { VID: 1, Make: "Honda", Model: "Civic", Color: "Blue" },
+  { VID: 2, Make: "Toyaota", Model: "Corolla", Color: "White" },
+  { VID: 3, Make: "Toyota ", Model: "Camry", Color: "Black" },
+  { VID: 4, Make: "Nissan", Model: "Versa", Color: "Red" },
+]
 
-export default doggos;
+export default vehicles;

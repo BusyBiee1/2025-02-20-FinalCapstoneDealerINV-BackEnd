@@ -2,8 +2,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.mjs';
-import dogRoutes from './routes/dog.mjs';
-import Dogs from './models/dogSchema.mjs';
+import vehicleRoutes from './routes/vehicle.mjs';
+import Dogs from './models/vehicleSchema.mjs';
 import doggos from './utilities/data.mjs';
 
 //Configurations
@@ -18,7 +18,7 @@ connectDB();
 app.use(express.json());
 
 //Routes
-app.use('/dog', dogRoutes);
+app.use('/dog', vehicleRoutes);
 
 //Create a seed route to fill our database with data
 app.get('/seed', async (req, res) => {
@@ -26,7 +26,7 @@ app.get('/seed', async (req, res) => {
   // await Dogs.deleteMany({})
 
   //This creates all data entries from array in db
-  await Dogs.create(doggos);
+  await Vehicles.create(vehicles);
 
   res.send('seeding db');
 });
