@@ -1,4 +1,4 @@
-import Dogs from '../models/vehicleSchema.mjs';
+import Vehicles from '../models/vehicleSchema.mjs';
 
 //Functions
 const CreateVehicle = async (req, res) => {
@@ -17,7 +17,7 @@ const CreateVehicle = async (req, res) => {
 const ReadVehicle = async (req, res) => {
   try {
     //Get data dn save to variable
-    const allVehicle = await Vehicles.find({});
+    const allVehicles = await Vehicles.find({});
     //Send data to front end: res
     res.json(allVehicles);
   } catch (err) {

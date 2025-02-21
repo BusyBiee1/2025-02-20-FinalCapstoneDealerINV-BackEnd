@@ -3,11 +3,12 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.mjs';
 import vehicleRoutes from './routes/vehicle.mjs';
-import Dogs from './models/vehicleSchema.mjs';
-import doggos from './utilities/data.mjs';
+import Vehicles from './models/vehicleSchema.mjs';
+import vehicles from './utilities/data.mjs';
 
 //Configurations
 dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -17,8 +18,11 @@ connectDB();
 //Middleware
 app.use(express.json());
 
+//app.use(co)
+
 //Routes
-app.use('/dog', vehicleRoutes);
+//app.use('/', vehicleRoutes);
+app.use('/vehicle', vehicleRoutes);
 
 //Create a seed route to fill our database with data
 app.get('/seed', async (req, res) => {
