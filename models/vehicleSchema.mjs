@@ -1,21 +1,11 @@
 import mongoose from 'mongoose';
 
-const VehicleSchema = new mongoose.Schema({
-  Vid: {
-    type: Number, required: true,
-  },
-  Make: {
-    type: String, required: true,
-  },
-  Model: {
-    type: String, required: true,
-  },
-  Color: {
-    type: String, required: true,
-  },
-  Year: {
-    type: Number, required: true,
-  },
+const vehicleSchema = new mongoose.Schema({
+  v_id: { type: Number, required: true, unique: true },
+  make: { type: String, required: true },
+  model: { type: String, required: true },
+  color: { type: String, required: true },
+  year: { type: String, required: true },
 });
 
-export default mongoose.model('Vehicles', VehicleSchema);
+export default mongoose.model('Vehicle', vehicleSchema);
