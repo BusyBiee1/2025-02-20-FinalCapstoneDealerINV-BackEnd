@@ -1,46 +1,36 @@
-//Imports
 import express from 'express';
-import dotenv from 'dotenv';
+import cors from 'cors';
 import connectDB from './config/db.mjs';
-import vehicleRoutes from './routes/vehicle.mjs';
-import Vehicles from './models/vehicleSchema.mjs';
-import vehicles from './utilities/data.mjs';
+//import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import vehicleRoutes from './routes/vehicles.mjs';
 
-//Configurations
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
+app.use(express.json());
+
 //Connect to DB
 connectDB();
 
+//mongoose.connect(process.env.MONGODB_URI, {
+//  useNewUrlParser: true,
+//  useUnifiedTopology: true,
+//});
+
 //Middleware
-app.use(express.json());
+app.use('/api/vehicles', vehicleRoutes);
 
-//app.use(co)
+// Global error handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'An unexpected error occurred', error: err.message });
+  });
 
-//Routes
-//app.use('/', vehicleRoutes);
-app.use('/vehicle', vehicleRoutes);
-
-//Create a seed route to fill our database with data
-app.get('/seed', async (req, res) => {
-  // This allows us to clear db before putting new data in (optional)
-  // await Dogs.deleteMany({})
-
-  //This creates all data entries from array in db
-  await Vehicles.create(vehicles);
-
-  res.send('seeding db');
-});
-
-//Error Checking Middleware
-app.use((err, _req, res, next) => {
-  res.status(500).json({ msg: 'You have encountered an error' });
-});
-
-//Listen to our express server
 app.listen(PORT, () => {
-  console.log(`Server is listening on Port: ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
+  // 
 });
