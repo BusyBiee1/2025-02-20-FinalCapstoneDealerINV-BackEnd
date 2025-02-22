@@ -16,11 +16,6 @@ app.use(express.json());
 //Connect to DB
 connectDB();
 
-//mongoose.connect(process.env.MONGODB_URI, {
-//  useNewUrlParser: true,
-//  useUnifiedTopology: true,
-//});
-
 //Middleware
 app.use('/api/vehicles', vehicleRoutes);
 
@@ -30,7 +25,8 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'An unexpected error occurred', error: err.message });
   });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  // 
+  
 });
