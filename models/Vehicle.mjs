@@ -1,11 +1,17 @@
-import mongoose from 'mongoose';
+import express from 'express';
+import { searchVehicles, getVehicles, addVehicle, updateVehicle, deleteVehicle } from '../controllers/vehicleController.mjs';
 
-const vehicleSchema = new mongoose.Schema({
-  v_id: { type: Number, required: true, unique: true },
-  make: { type: String, required: true },
-  model: { type: String, required: true },
-  color: { type: String, required: true },
-  year: { type: String, required: true },
-});
+const router = express.Router();
 
-export default mongoose.model('Vehicle', vehicleSchema);
+// Search
+router.get('/search', searchVehicles);
+//Read
+router.get('/', getVehicles);
+//Create
+router.post('/', addVehicle);
+//Update / Put 
+router.put('/:id', updateVehicle);
+//Delete
+router.delete('/:id', deleteVehicle);
+
+export default router;

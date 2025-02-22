@@ -53,7 +53,7 @@ export const addVehicle = async (req, res) => {
     
     //res.send(req.body);
     
-    //orig code
+    //oc
     //const newVehicle = await vehicle.save();
     //res.status(201).json(newVehicle);
   } catch (error) {
@@ -71,7 +71,7 @@ export const updateVehicle = async (req, res) => {
         res.send(req.body);
         //res.status(201).json(req.body);
         //res.status(201).json({ message: 'Vehicle updated: ' }, req.body);        
-    //orig code
+    //oc
     //const updatedVehicle = await Vehicle.findByIdAndUpdate(req.params.id, req.body, { new: true });
     //res.json(updatedVehicle);
     }
@@ -98,7 +98,7 @@ export const deleteVehicle = async (req, res) => {
     else {
         res.send("No vehicle found for that vehicle id 'v_id': " + req.params.id);    
     }
-    //orig code
+    //oc
     //await Vehicle.findByIdAndDelete(req.params.id);
     //res.json({ message: 'Vehicle deleted' });
   } catch (error) {
