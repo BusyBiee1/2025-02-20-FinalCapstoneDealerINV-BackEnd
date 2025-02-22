@@ -1,5 +1,23 @@
 import Vehicle from '../models/Vehicle.mjs';
 
+// Search vehicles by make, model, color, year
+export const searchVehicles = async (req, res) => {
+  try {
+    const { make, model, color, year } = req.query;
+    let query = {};
+
+    if (make) query.make = new RegExp(make, 'i');
+    if (model) query.model = new RegExp(model, 'i');
+    if (color) query.color = new RegExp(color, 'i');
+    if (year) query.year = year;
+
+    const vehicles = await Vehicle.find(query);
+    res.json(vehicles);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // Get / Read
 export const getVehicles = async (req, res) => {
   try {

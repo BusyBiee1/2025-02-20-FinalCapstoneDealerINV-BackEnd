@@ -1,8 +1,10 @@
 import express from 'express';
-import { getVehicles, addVehicle, updateVehicle, deleteVehicle } from '../controllers/vehicleController.mjs';
+import { searchVehicles, getVehicles, addVehicle, updateVehicle, deleteVehicle } from '../controllers/vehicleController.mjs';
 
 const router = express.Router();
 
+// Search
+router.get('/search', searchVehicles);
 //Read
 router.get('/', getVehicles);
 //Create
