@@ -8,6 +8,7 @@ const vehicleSchema = new mongoose.Schema({
   year: { type: String, required: true },
 });
 
-vehicleSchema.index({ v_id: 1 });
+// dont need this line as it becomes a duplicate index after putting v_id index:true in schema above
+//vehicleSchema.index({ v_id: 1 });
 
 export default mongoose.model('Vehicle', vehicleSchema);
