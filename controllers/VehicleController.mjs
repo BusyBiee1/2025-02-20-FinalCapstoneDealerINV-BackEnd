@@ -1,6 +1,7 @@
 import Vehicle from '../models/Vehicle.mjs';
 
 // Search vehicles by make, model, color, year
+// eg http://localhost:3000/api/vehicles/search?make=Tesla
 export const searchVehicles = async (req, res) => {
   try {
     const { make, model, color, year } = req.query;
@@ -19,6 +20,7 @@ export const searchVehicles = async (req, res) => {
 };
 
 // Get / Read
+// eg http://localhost:3000/api/vehicles
 export const getVehicles = async (req, res) => {
   try {
     const vehicles = await Vehicle.find();
@@ -29,6 +31,8 @@ export const getVehicles = async (req, res) => {
 };
 
 // Post / Create
+// eg http://localhost:3000/api/vehicles/search?make=Tesla
+// eg post request with body: {"make": "Honda","model": "Camry","year": "2020","color": "White"
 export const addVehicle = async (req, res) => {
   //console.log('req: ', req.body);
   //const vehicle = new Vehicle(req.body);
@@ -62,6 +66,8 @@ export const addVehicle = async (req, res) => {
 };
 
 // Push  / Put
+// eg http://localhost:3000/api/vehicles/search?make=Tesla
+// eg put request with body: {"make": "Honda", "model": "Camry", "year": "2005", "color": "White" }
 export const updateVehicle = async (req, res) => {
   try {
     let query = await Vehicle.findOne({v_id: req.params.id});
@@ -84,6 +90,7 @@ export const updateVehicle = async (req, res) => {
 };
 
 // Delete
+// eg http://localhost:3000/api/vehicles/19
 export const deleteVehicle = async (req, res) => {
   try {
     let query = await Vehicle.findOne({v_id: req.params.id});
