@@ -31,41 +31,42 @@ export const getVehicles = async (req, res) => {
 };
 
 // Post / Create
-// eg http://localhost:3000/api/vehicles/search?make=Tesla
-// eg post request with body: {"make": "Honda","model": "Camry","year": "2020","color": "White"
-export const addVehicle = async (req, res) => {
-  //console.log('req: ', req.body);
-  //const vehicle = new Vehicle(req.body);
-  try {
-    //console.log("here");
-    let result = await Vehicle.findOne().sort({v_id: -1});
-    //console.log('result: ', result);
-    if (result) 
-    //if (result.v_id) 
-        req.body.v_id = result.v_id + 1;
-    else 
-        req.body.v_id = 1;
-    //console.log('New : ', req.body.v_id);
-    await Vehicle.create(req.body)
-    res.json(req.body);
-    //res.status(201).json(req.body);
-    //res.status(201).json({ message: 'Vehicle added: ' }, req.body);        
+ // eg http://localhost:3000/api/vehicles/search?make=Tesla
+ // eg post request with body: {"make": "Honda","model": "Camry","year": "2020","color": "White"
+ export const addVehicle = async (req, res) => {
+   //console.log('req: ', req.body);
+   //const vehicle = new Vehicle(req.body);
+   try {
+     //console.log("here");
+     let result = await Vehicle.findOne().sort({v_id: -1});
+     //console.log('result: ', result);
+     if (result) 
+     //if (result.v_id) 
+         req.body.v_id = result.v_id + 1;
+     else 
+         req.body.v_id = 1;
+     //console.log('New : ', req.body.v_id);
+     await Vehicle.create(req.body)
+     res.json(req.body);
+     //res.status(201).json(req.body);
+     //res.status(201).json({ message: 'Vehicle added: ' }, req.body);        
 
 
-    //await Vehicle.create(req.body);
-    //res.status(201).json(req.body);
+     //await Vehicle.create(req.body);
+     //res.status(201).json(req.body);
     
-    //res.send(req.body);
+     //res.send(req.body);
     
-    //oc
-    //const newVehicle = await vehicle.save();
-    //res.status(201).json(newVehicle);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+     //oc
+     //const newVehicle = await vehicle.save();
+     //res.status(201).json(newVehicle);
+   } catch (error) {
+     res.status(500).json({ message: error.message });
+   }
+ };
+ 
 
-// Push  / Put
+// Put  / Push / Update
 // eg http://localhost:3000/api/vehicles/search?make=Tesla
 // eg put request with body: {"make": "Honda", "model": "Camry", "year": "2005", "color": "White" }
 export const updateVehicle = async (req, res) => {
