@@ -1,13 +1,14 @@
-// Initialize express router
+// import dependencies
 import express from 'express';
-import { registerUser, loginUser } from '../controllers/userController.mjs';
+import { registerUser, loginUser } from '../controllers/userController.mjs'; // Import controller functions for user registration and login
 
-const router = express.Router();
+const router = express.Router(); // Create an Express router instance
 
-// Register
-router.post('/register', registerUser);
+// Register user
+router.post('/register', registerUser);  // Define a POST route for user registration, using the registerUser controller function
 
-// Login
-router.post('/login', loginUser);
+// Login user
+router.post('/login', loginUser); // Define a POST route for user login, using the loginUser controller function
 
 export default router;
+

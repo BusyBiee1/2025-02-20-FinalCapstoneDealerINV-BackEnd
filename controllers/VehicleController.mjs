@@ -1,4 +1,6 @@
-import Vehicle from '../models/Vehicle.mjs';
+// import dependencies
+import Vehicle from '../models/Vehicle.mjs'; // Import the Vehicle model
+
 // Get / Read
 // Search vehicles by make, model, color, year
 // eg http://localhost:3000/api/vehicles/search?make=Tesla
@@ -7,12 +9,12 @@ export const searchVehicles = async (req, res) => {
     const { make, model, color, year } = req.query;
     let query = {};
 
-    if (make) query.make = new RegExp(make, 'i');
+    if (make) query.make = new RegExp(make, 'i'); // Add make to the query if provided (case-insensitive)
     if (model) query.model = new RegExp(model, 'i');
     if (color) query.color = new RegExp(color, 'i');
     if (year) query.year = year;
 
-    const vehicles = await Vehicle.find(query);
+    const vehicles = await Vehicle.find(query); // Find vehicles matching the query
     res.json(vehicles);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -23,8 +25,8 @@ export const searchVehicles = async (req, res) => {
 // eg http://localhost:3000/api/vehicles
 export const getVehicles = async (req, res) => {
   try {
-    const vehicles = await Vehicle.find();
-    res.json(vehicles);
+    const vehicles = await Vehicle.find(); // Find all vehicles
+    res.json(vehicles); // Send all vehicles as a JSON response
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -38,13 +40,13 @@ export const getVehicles = async (req, res) => {
    //const vehicle = new Vehicle(req.body);
    try {
      //console.log("here");
-     let result = await Vehicle.findOne().sort({v_id: -1});
+     let result = await Vehicle.findOne().sort({v_id: -1}); // Find the vehicle with the highest v_id
      //console.log('result: ', result);
      if (result) 
      //if (result.v_id) 
-         req.body.v_id = result.v_id + 1;
+         req.body.v_id = result.v_id + 1; // Increment the v_id for the new vehicle
      else 
-         req.body.v_id = 1;
+         req.body.v_id = 1; // If no vehicles exist, set v_id to 1
      //console.log('New : ', req.body.v_id);
      await Vehicle.create(req.body)
      res.json(req.body);
