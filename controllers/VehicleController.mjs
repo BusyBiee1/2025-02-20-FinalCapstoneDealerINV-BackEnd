@@ -1,5 +1,5 @@
 import Vehicle from '../models/Vehicle.mjs';
-
+// Get / Read
 // Search vehicles by make, model, color, year
 // eg http://localhost:3000/api/vehicles/search?make=Tesla
 export const searchVehicles = async (req, res) => {
@@ -31,7 +31,7 @@ export const getVehicles = async (req, res) => {
 };
 
 // Post / Create
- // eg http://localhost:3000/api/vehicles/search?make=Tesla
+ // eg http://localhost:3000/api/vehicles
  // eg post request with body: {"make": "Honda","model": "Camry","year": "2020","color": "White"
  export const addVehicle = async (req, res) => {
    //console.log('req: ', req.body);
@@ -66,8 +66,8 @@ export const getVehicles = async (req, res) => {
  };
  
 
-// Put  / Push / Update
-// eg http://localhost:3000/api/vehicles/search?make=Tesla
+// Put  / Patch / Update
+// eg http://localhost:3000/api/vehicles/12
 // eg put request with body: {"make": "Honda", "model": "Camry", "year": "2005", "color": "White" }
 export const updateVehicle = async (req, res) => {
   try {
@@ -91,7 +91,7 @@ export const updateVehicle = async (req, res) => {
 };
 
 // Delete
-// eg http://localhost:3000/api/vehicles/19
+// eg http://localhost:3000/api/vehicles/12
 export const deleteVehicle = async (req, res) => {
   try {
     let query = await Vehicle.findOne({v_id: req.params.id});
