@@ -1,5 +1,5 @@
 import express from 'express';
-import { searchVehicles, getVehicles, addVehicle, updateVehicle, deleteVehicle } from '../controllers/vehicleController.mjs';
+import { searchVehicles, getVehicles, addVehicle, updateVehicle, deleteVehicle } from '../controllers/VehicleController.mjs';
 
 const router = express.Router();
 
