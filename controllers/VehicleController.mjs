@@ -1,7 +1,7 @@
 // import dependencies
 import Vehicle from '../models/Vehicle.mjs'; // Import the Vehicle model
 
-// Get / Read
+// Get / Read - Searching
 // Search vehicles by make, model, color, year
 // eg http://localhost:3000/api/vehicles/search?make=Tesla
 export const searchVehicles = async (req, res) => {
